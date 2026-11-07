@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' glint-media: https: data:; media-src 'self' glint-media: file:; connect-src 'none'; font-src 'self'">
+<title>Glint</title>
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="motion.css">
+<link rel="stylesheet" href="upload.css">
+</head>
+<body>
+<header class="titlebar">
+  <div class="brand"><img src="../assets/icon.svg" alt=""><span>GLINT</span></div>
+  <div class="rec" id="rec"></div>
+  <div class="tb-right">
+    <button class="tb-update" id="tb-update" hidden></button>
+    <button class="tbtn" data-win="min" title="Minimize"></button>
+    <button class="tbtn" data-win="max" title="Maximize"></button>
+    <button class="tbtn close" data-win="close" title="Close to tray"></button>
+  </div>
+</header>
+<div class="shell">
+  <nav class="side">
+    <div class="nav">
+      <button class="nav-i" data-view="library"><span class="ni" data-icon="film"></span><span>Clips</span><em id="nav-count"></em></button>
+      <button class="nav-i" data-view="games"><span class="ni" data-icon="gamepad"></span><span>Games</span></button>
+      <button class="nav-i" data-view="settings"><span class="ni" data-icon="settings"></span><span>Settings</span></button>
+    </div>
+    <div class="side-clip" id="side-clip"></div>
+    <div class="acct" id="acct"></div>
+  </nav>
+  <main class="main" id="main"></main>
+</div>
+<div class="snacks" id="snacks"></div>
+<div class="modal-wrap" id="modal" hidden></div>
+<script src="icons.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

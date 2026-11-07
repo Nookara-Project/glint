@@ -1,0 +1,7 @@
+node_modules/
+dist/
+vendor/ffmpeg/
+vendor/*.zip
+vendor/ffmpeg-extract/
+bin/
+*.log

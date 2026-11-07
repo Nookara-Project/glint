@@ -1,0 +1,32 @@
+[Unit]
+Description=Glint clip backend + web viewer (clips.nookara.cc)
+After=network.target
+
+[Service]
+Type=simple
+User=glint
+Group=glint
+WorkingDirectory=/opt/glint/server
+Environment=NODE_ENV=production
+Environment=PORT=3420
+Environment=HOST=127.0.0.1
+Environment=DATA_DIR=/var/lib/glint
+Environment=WEB_DIR=/opt/glint/web
+Environment=DOWNLOAD_DIR=/var/www/html/glint/download
+ExecStart=/usr/bin/node /opt/glint/server/src/index.js
+Restart=always
+RestartSec=3
+# hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/glint
+# ffmpeg runs inside this cgroup: a 1440p60 encode peaks ~500 MB. MemoryHigh throttles first; if the hard cap is
+# hit the kernel kills ffmpeg (oom_score_adj 1000), and OOMPolicy=continue keeps the Node service running.
+MemoryHigh=1200M
+MemoryMax=1536M
+OOMPolicy=continue
+
+[Install]
+WantedBy=multi-user.target
